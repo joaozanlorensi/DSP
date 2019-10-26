@@ -1,0 +1,28 @@
+Enunciado: "Execute o arquivo sampling.m com o áudio habilitado. Interprete e explique os 
+resultados ressaltando, por exemplo, por que o áudio parece ter volume mais fraco após a amostragem. 
+Sugira uma solução para o problema."
+
+O sinal analógico de entrada é xc(t) = cos(2*pi*440*t) - 0.9 *cos(2*pi*2440*t), 
+uma composição de dois sinais cossenoidais, sendo o primeiro de frequência igual
+a 400 Hz, e o segundo 2440 Hz.
+
+Inicialmente, foi reproduzido o som gerado por essa função.
+
+Após, foi definida uma frequência de amostragem de 2000 Hz, e o sinal de entrada foi 
+amostrado, gerando como resultado um som diferente ("mais fraco").
+
+Então, foram gerados os gráficos das transformadas de Fourier no tempo discreto pelo 
+método da FFT do sinal antes da amostragem e após a amostragem, representando o sinal
+no domínio da frequência.
+
+No primeiro gráfico, observa-se duas frequências destacadas, uma em 440 Hz e outra em 2440 Hz.
+
+No segundo gráfico, por outro lado, somente uma frequência foi destacada, em 440 Hz.
+Isso se deve à frequência de amostragem empregada, que atende o critério de Nyquist para 
+o primeiro sinal cossenoidal, ou seja, é maior que 2 x 440 Hz = 880 Hz, no entanto não atende
+o critério de Nyquist para o segundo sinal cossenoidal, ou seja, Fs < 2 x 2440 Hz.
+Assim, a frequência aparente do segundo sinal é de 2440 - 2000 = 440 Hz também, o que 
+faz com que pareça que a única nota tocada é aquela com frequência igual a 440 Hz (lá natural.)
+
+Uma solução para isso é empregar frequências de amostragem superiores a 4880 Hz, 
+como por exemplo 5 kHz.
